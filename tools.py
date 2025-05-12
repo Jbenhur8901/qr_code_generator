@@ -24,7 +24,7 @@ def artisticQr(content: str, source: str, filename: str = "myQr", scale: int = 1
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
-    qr = segno.make(content, error = "h")
+    qr = segno.make_qr(content, error = "h")
     target_path = os.path.join(output_dir, f"{filename}.png")
 
     qr.to_artistic(
