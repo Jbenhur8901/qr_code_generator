@@ -26,8 +26,8 @@ with st.form(key="my_form") :
     
     note = st.text_area("Note")
 
-
-    if st.form_submit_button() : 
+    flag = st.form_submit_button()
+    if flag : 
         
         fullname = name + " " + first_name
 
@@ -44,6 +44,7 @@ with st.form(key="my_form") :
             path = save_uploaded_image(logo)
             artisticQr(vcard_string, path, filename=filename)
 
-st.image(f"qrs/{filename}.png", caption="QR Code")
+if flag :
+    st.image(f"qrs/{filename}.png", caption="QR Code")
 
 
