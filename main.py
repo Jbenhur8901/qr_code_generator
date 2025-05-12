@@ -3,9 +3,7 @@ from ecard import create_vcard
 from tools import *
 
 with st.sidebar : 
-    st.title("Sidebar")
-    st.write("This is the sidebar content.")
-    st.button("Click me!")
+    st.title("Options")
 
 with st.form(key="my_form") :
     st.title("Form")
@@ -24,6 +22,7 @@ with st.form(key="my_form") :
         org = st.text_input("Organisation")
         tel_work = st.text_input("Téléphone 2 (Bureau)")
         url = st.text_input("Site Web")
+        filename = st.text_input("Nom du Fichier")
     
     note = st.text_area("Note")
 
@@ -37,14 +36,14 @@ with st.form(key="my_form") :
             title=title,
             tel_cell=tel_cell,
             email=mail,
-            org=org,
             tel_work=tel_work,
             url=url,
             note=note,
         )
         if logo is not None : 
             path = save_uploaded_image(logo)
-            artisticQr(vcard_string, path)
+            artisticQr(vcard_string, path, filename=filename)
 
+st.image(f"qrs/{filename}.png", caption="QR Code")
 
 

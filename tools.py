@@ -15,7 +15,7 @@ def simpleQr(content: str, filename: str = "myQr", scale: int = 10):
     qr.save(os.path.join(output_dir, f"{filename}.png"), scale=scale)
 
 
-def artisticQr(content: str, source: str, filename: str = "myQr", scale: int = 8):
+def artisticQr(content: str, source: str, filename: str = "myQr", scale: int = 10):
     """
     Génère un QR code artistique en superposant le code sur une image de fond.
     """
@@ -24,7 +24,7 @@ def artisticQr(content: str, source: str, filename: str = "myQr", scale: int = 8
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
-    qr = segno.make_qr(content)
+    qr = segno.make(content, error = "h")
     target_path = os.path.join(output_dir, f"{filename}.png")
 
     qr.to_artistic(
